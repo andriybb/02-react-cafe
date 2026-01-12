@@ -5,6 +5,7 @@ import CafeInfo from './components/CafeInfo/CafeInfo'
 import VoteOptions from './components/VoteOptions/VoteOptions'
 import VoteStats from './components/VoteStats/VoteStats'
 import css from './App.module.css'
+import Notification from './components/Notification/Notification'
 
 function App() {
 const [votes, setVotes] = useState<Votes>({ good: 0, neutral: 0, bad: 0 });
@@ -35,14 +36,18 @@ const [votes, setVotes] = useState<Votes>({ good: 0, neutral: 0, bad: 0 });
         <VoteOptions 
         onVote={handleVote}    
         onReset={resetVotes}  
-        canReset={true} 
+        canReset={totalVotes>0} 
       />
+      {totalVotes > 0 ? (
         <VoteStats 
-        votes={votes}    
-        totalVotes={totalVotes}  
-        positiveRate={positiveRate}
-      />
-
+          votes={votes} 
+          totalVotes={totalVotes} 
+          positiveRate={positiveRate} 
+        />
+      ) : (
+        <Notification />
+      )}
+      
       </div>
       
     </>

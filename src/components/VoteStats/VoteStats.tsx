@@ -11,7 +11,6 @@ interface VoteStatsProps {
 
 function VoteStats({votes, totalVotes, positiveRate}:VoteStatsProps) {
 
-
   return (
     <>
 <div className={css.container}>
